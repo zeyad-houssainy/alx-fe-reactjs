@@ -1,10 +1,13 @@
-function Home() {
-    return (
-        <div style={{ padding: '20px', backgroundColor: '#f4f4f4', textAlign: 'center' }}>
-            <h1 style={{ color: '#333' }}>Welcome to Our Company</h1>
-            <p style={{ color: '#666', fontSize: '1.2em' }}>We are dedicated to delivering excellence in all our services.</p>
-        </div>
-    );
-}
+//  import { Routes } from 'react-router-dom'
 
-export default Home;
+ import { createBrowserRouter, RouterProvider, Routes, Route, BrowserRouter} from 'react-router-dom'  
+   function Home() {
+     return (
+       <div style={{ padding: '20px' }}>
+         <h1>Welcome to Our Company</h1>
+         <p>We are dedicated to delivering excellence in all our services.</p>
+       </div>
+     );
+   }
+
+   export default Home;

@@ -1,25 +1,31 @@
-import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './components/Home';
-import About from './components/About';
-import Services from './components/Services';
-import Contact from './components/Contact';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import './App.css'
+import About from './components/About.jsx'
+import Contact from './components/Contact.jsx'
+import Home from './components/Home.jsx'
+import Services from './components/Services.jsx'
+import Navbar from './components/Navbar.jsx'
+import { createBrowserRouter, BrowserRouter, Route, Routes } from 'react-router-dom'
+
+// const router = createBrowserRouter([
+//   {path:'/', element: <Home />},
+//   {path:'/Contact', element: <Contact />},
+//   {path:'/About', element: <About />},
+//   {path:'/Services', element: <Services />},
+// ])
+
 
 function App() {
   return (
-    <BrowserRouter basename="/">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/about" element={<About />}/>
-        <Route path="/services" element={<Services />}/>
-        <Route path="/contact" element={<Contact />}/>
-      </Routes>
-      <Footer />
+    <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App
