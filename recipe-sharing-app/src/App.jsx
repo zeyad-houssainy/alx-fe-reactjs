@@ -3,7 +3,7 @@ import './App.css'
 import RecipeList from './components/RecipeList'
 import AddRecipeForm from './components/AddRecipeForm'
 import RecipeDetails from './components/RecipeDetails'
-import SearchBar from './components/SearchBar'
+import PrintTesting from './components/PrintTesting'
 
 // Wrapper component to extract recipe ID from URL params
 function RecipeDetailsPage() {
@@ -28,6 +28,7 @@ function App() {
               <RecipeDetailsPage />} />
         </Routes>
       </div>
+      <PrintTesting />
       
     </BrowserRouter>
   )

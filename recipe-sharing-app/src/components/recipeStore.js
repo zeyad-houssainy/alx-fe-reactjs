@@ -19,6 +19,8 @@ const useRecipeStore = create(set => ({
       description: "Fresh mixed greens topped with grilled chicken breast, cherry tomatoes, cucumbers, and balsamic vinaigrette."
     }
   ],
+
+  // BASIC CRUD FEATURES
   addRecipe: (newRecipe) => set(state => ({ recipes: [...state.recipes, newRecipe] })),
   setRecipes: (recipes) => set({ recipes }), 
   deleteRecipe: (recipeId) => set(state => ({ recipes: state.recipes.filter(recipe => recipe.id !== recipeId) })),
@@ -36,7 +38,29 @@ const useRecipeStore = create(set => ({
     filteredRecipes: state.recipes.filter(recipe =>
       recipe.title.toLowerCase().includes(state.searchTerm.toLowerCase())
     )
-  }))
+  })),
+
+  // Favorites 
+  favorites: [],
+  addFavorite: (recipeId) => set(state => {
+    // Only add if not already in favorites
+    if (!state.favorites.includes(recipeId)) {
+      return { favorites: [...state.favorites, recipeId] };
+    }
+    // If already in favorites, return current state (no change)
+    return state;
+  }),
+  removeFavorite: (recipeId) => set(state => ({
+    favorites: state.favorites.filter(id => id !== recipeId)
+  })),
+  recommendations: [],
+  generateRecommendations: () => set(state => {
+    // Mock implementation based on favorites
+    const recommended = state.recipes.filter(recipe =>
+      state.favorites.includes(recipe.id) && Math.random() > 0.5
+    );
+    return { recommendations: recommended };
+  }),
 }));
 
 export { useRecipeStore };

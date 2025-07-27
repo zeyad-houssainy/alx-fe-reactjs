@@ -7,6 +7,11 @@ import SearchBar from './SearchBar';
     const recipes = useRecipeStore(state => state.recipes);
     const filteredRecipes = useRecipeStore(state => state.filteredRecipes)
 
+    // Adding Favorite option to the list
+    const favorites = useRecipeStore(state => state.favorites);
+    const addFavorite = useRecipeStore(state => state.addFavorite);
+    const removeFavorite = useRecipeStore(state => state.removeFavorite);
+
     function handleRecipeList(recipesList) {
       return (
         recipesList.map((recipe, index) => (
@@ -15,8 +20,16 @@ import SearchBar from './SearchBar';
               <p>{recipe.description}</p>
               {/* <button onClick={}>Show details</button> */}
               <Link to={`/recipe/${recipe.id}`}>View Details</Link> {/* Link to details */}
+              <button 
+                style={{backgroundColor:"green"}} 
+                onClick={addFavorite}>
+                  Add to Favorite
+              </button>
+              
             </div>
-          ))
+          )
+        )
+
       )
     }
 
