@@ -1,4 +1,4 @@
-import { useRecipeStore } from "../store/recipeStore"
+import { useRecipeStore } from "./recipeStore"
 import { useNavigate } from "react-router-dom"
 
 // MISTAKE: Calling hook outside of component body

@@ -2,7 +2,7 @@
 
 
 import { useState } from 'react';
-import { useRecipeStore } from '../store/recipeStore';
+import { useRecipeStore } from './recipeStore';
 
 function EditRecipeForm({ recipe, onUpdateComplete }) {
     console.log("EditRecipeForm was clicked")
