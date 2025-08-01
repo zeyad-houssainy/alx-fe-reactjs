@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useParams, Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import './App.css'
 import apiData from './services/githubAPI'
+import Greeting from './components/Greeting'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
   return (
     <BrowserRouter>
         <h1>Hello world</h1>
+        <Greeting />
         <Routes>
           {/* <Route path='' element={}/> */}
         </Routes>
