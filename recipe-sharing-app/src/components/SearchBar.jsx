@@ -4,13 +4,11 @@ import { useRecipeStore } from './recipeStore';
 function SearchBar() {
     const setSearchTerm = useRecipeStore(state => state.setSearchTerm)
     const filterRecipes = useRecipeStore(state => state.filterRecipes)
-    const recipes = useRecipeStore(state => state.recipes)
-
 
     return(
         <input 
             type="text" 
-            placeholder="Search Filter"
+            placeholder="Search recipes..."
             style={{
                 width: "80%", 
                 height: "30px"
@@ -18,7 +16,7 @@ function SearchBar() {
             onChange={
                 (e) => {
                     setSearchTerm(e.target.value);
-                    filterRecipes(recipes);
+                    filterRecipes();
                 }
             }
         />

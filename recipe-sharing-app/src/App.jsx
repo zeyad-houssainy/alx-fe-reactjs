@@ -4,6 +4,7 @@ import RecipeList from './components/RecipeList'
 import AddRecipeForm from './components/AddRecipeForm'
 import RecipeDetails from './components/RecipeDetails'
 import PrintTesting from './components/PrintTesting'
+import FavoritesList from './components/FavoritesList'
 
 // Wrapper component to extract recipe ID from URL params
 function RecipeDetailsPage() {
@@ -24,11 +25,14 @@ function App() {
               <AddRecipeForm />
             </>
             }/>
-            <Route path="/recipe/:id" element={
+            
+          <Route path="/recipe/:id" element={
               <RecipeDetailsPage />} />
+          <Route path='/favorites' element={<FavoritesList/>}/>
         </Routes>
       </div>
       <PrintTesting />
+      <Link to={'/favorites'}>Show Favorites</Link>
       
     </BrowserRouter>
   )

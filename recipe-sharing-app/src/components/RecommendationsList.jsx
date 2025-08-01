@@ -1,6 +1,6 @@
 // src/components/RecommendationsList.jsx
 import { useEffect } from 'react';
-import { useRecipeStore } from '../recipeStore';
+import { useRecipeStore } from './recipeStore';
 
 const RecommendationsList = () => {
   const recommendations = useRecipeStore((state) => state.recommendations);
