@@ -1,6 +1,6 @@
 function Greeting() {
     return (
-        <h1>Hey all</h1>
+        <p>Use the search bar below to look for the API</p>
     )
 }
 
