@@ -11,22 +11,24 @@ function Search() {
         setSearchTerm(e.target.value)
     }
 
-    const handleSearch = () => {
-        // fetchUserData(searchTerm)
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
         if (searchTerm.trim()) {
-            setLoading(true)
-            setError(null)
-            
+            setLoading(true);
+            setError(null);
+
             fetchUserData(searchTerm)
                 .then(data => {
-                    setUserData(data)
-                    setLoading(false)
+                    setUserData(data);
+                    setLoading(false);
                 })
                 .catch(err => {
-                    setError("Looks like we cant find the user")
-                    setUserData(null)
-                    setLoading(false)
-                })
+                    setError("Looks like we cant find the user");
+                    setUserData(null);
+                    setLoading(false);
+                });
         }
     }
 
@@ -42,28 +44,41 @@ function Search() {
     return(
         <>
             {/* Input form */}
-            <div style={{display: "flex", gap: "10px", alignItems: "center"}}>
-                <input 
-                    type="text"
-                    value={searchTerm}
-                    onChange={handleInputChange}
-                    placeholder="Enter GitHub username..."
-                    style={inputStyling}
-                />
-                <button onClick={handleSearch} style={{height: "50px", fontSize: "18px"}}>
-                    Search
-                </button>
-            </div>
+            <form onSubmit={handleSubmit}>
+                <div style={{display: "flex", gap: "10px", alignItems: "center"}}>
+                    <input 
+                        type="text"
+                        value={searchTerm}
+                        onChange={handleInputChange}
+                        placeholder="Enter GitHub username..."
+                        style={inputStyling}
+                    />
+                    <button type="submit" style={{height: "50px", fontSize: "18px"}}>
+                        Search
+                    </button>
+                </div>
+            </form>
             
             {loading && <h2>Loading...</h2>}
             {error && <h2 style={{color: "red"}}>{error}</h2>}
             {userData && (
                 <div>
                     <h2>Search Result:</h2>
+                    <img 
+                        src={userData.avatar_url} 
+                        alt={`${userData.login}'s avatar`}
+                        style={{
+                            width: "100px", 
+                            height: "100px", 
+                            borderRadius: "50%", 
+                            marginBottom: "10px"
+                        }}
+                    />
                     <p><strong>Username:</strong> {userData.login}</p>
                     <p><strong>Name:</strong> {userData.name || "Not provided"}</p>
                     <p><strong>Public Repos:</strong> {userData.public_repos}</p>
                     <p><strong>Followers:</strong> {userData.followers}</p>
+                    
                 </div>
             )}
         </>
