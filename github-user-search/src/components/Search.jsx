@@ -1,13 +1,15 @@
 import { useState } from "react";
-import fetchUserData from "../services/githubService";
+import { fetchUserData, searchUsers, getUserDetails } from "../services/githubService";
 
 function Search() {
     const [searchTerm, setSearchTerm] = useState("")
     const [location, setLocation] = useState("")
     const [minRepos, setMinRepos] = useState("")
     const [userData, setUserData] = useState(null)
+    const [searchResults, setSearchResults] = useState([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
+    const [useAdvancedSearch, setUseAdvancedSearch] = useState(false)
 
     const handleInputChange = (e) => {
         setSearchTerm(e.target.value)
@@ -21,6 +23,21 @@ function Search() {
         setMinRepos(e.target.value)
     }
 
+    const handleViewUser = (username) => {
+        setLoading(true);
+        setError(null);
+        
+        getUserDetails(username)
+            .then(data => {
+                setUserData(data);
+                setUseAdvancedSearch(false);
+                setLoading(false);
+            })
+            .catch(err => {
+                setError("Error fetching user details");
+                setLoading(false);
+            });
+    }
 
 
     const handleSubmit = (e) => {
@@ -28,37 +45,47 @@ function Search() {
         if (searchTerm.trim()) {
             setLoading(true);
             setError(null);
+            setUserData(null);
+            setSearchResults([]);
 
-            // For advanced search, we'll still use the single user endpoint for simplicity
-            // In a real app, you'd use GitHub's search API with query parameters
-            fetchUserData(searchTerm)
-                .then(data => {
-                    // Filter results based on advanced criteria if provided
-                    let shouldDisplay = true;
-                    
-                    if (location.trim() && data.location) {
-                        shouldDisplay = data.location.toLowerCase().includes(location.toLowerCase());
-                    } else if (location.trim() && !data.location) {
-                        shouldDisplay = false;
-                    }
-                    
-                    if (minRepos.trim() && !isNaN(minRepos)) {
-                        shouldDisplay = shouldDisplay && data.public_repos >= parseInt(minRepos);
-                    }
-                    
-                    if (shouldDisplay) {
+            // Determine if we should use advanced search
+            const hasAdvancedCriteria = location.trim() || minRepos.trim();
+            
+            if (hasAdvancedCriteria) {
+                // Use GitHub's Search API for advanced search
+                const searchCriteria = {
+                    username: searchTerm,
+                    location: location,
+                    minRepos: minRepos
+                };
+                
+                searchUsers(searchCriteria)
+                    .then(data => {
+                        if (data.items && data.items.length > 0) {
+                            setSearchResults(data.items);
+                            setUseAdvancedSearch(true);
+                        } else {
+                            setError("No users found matching the specified criteria");
+                        }
+                        setLoading(false);
+                    })
+                    .catch(err => {
+                        setError("Error searching users. Please try again.");
+                        setLoading(false);
+                    });
+            } else {
+                // Use single user API for simple username search
+                fetchUserData(searchTerm)
+                    .then(data => {
                         setUserData(data);
-                    } else {
-                        setError("User doesn't match the specified criteria");
-                        setUserData(null);
-                    }
-                    setLoading(false);
-                })
-                .catch(err => {
-                    setError("Looks like we cant find the user");
-                    setUserData(null);
-                    setLoading(false);
-                });
+                        setUseAdvancedSearch(false);
+                        setLoading(false);
+                    })
+                    .catch(err => {
+                        setError("User not found. Please check the username.");
+                        setLoading(false);
+                    });
+            }
         }
     }
 
@@ -175,6 +202,86 @@ function Search() {
                     border: "1px solid #f5c6cb"
                 }}>
                     <h2>Error: {error}</h2>
+                </div>
+            )}
+
+            {/* Search Results List (Advanced Search) */}
+            {useAdvancedSearch && searchResults.length > 0 && (
+                <div style={{
+                    backgroundColor: "white",
+                    padding: "20px",
+                    borderRadius: "10px",
+                    boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+                    marginBottom: "20px"
+                }}>
+                    <h2 style={{textAlign: "center", marginBottom: "20px", color: "#333"}}>
+                        Search Results ({searchResults.length} users found):
+                    </h2>
+                    
+                    <div style={{display: "grid", gap: "15px"}}>
+                        {searchResults.map((user) => (
+                            <div key={user.id} style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "15px",
+                                padding: "15px",
+                                border: "1px solid #ddd",
+                                borderRadius: "8px",
+                                backgroundColor: "#f9f9f9"
+                            }}>
+                                <img 
+                                    src={user.avatar_url} 
+                                    alt={`${user.login}'s avatar`}
+                                    style={{
+                                        width: "60px", 
+                                        height: "60px", 
+                                        borderRadius: "50%",
+                                        border: "2px solid #ddd"
+                                    }}
+                                />
+                                
+                                <div style={{flex: "1"}}>
+                                    <h3 style={{margin: "0 0 5px 0", color: "#333"}}>
+                                        {user.login}
+                                    </h3>
+                                    <p style={{margin: "0", color: "#666", fontSize: "14px"}}>
+                                        {user.type} • Score: {user.score?.toFixed(1)}
+                                    </p>
+                                </div>
+                                
+                                <button 
+                                    onClick={() => handleViewUser(user.login)}
+                                    style={{
+                                        padding: "8px 16px",
+                                        backgroundColor: "#007bff",
+                                        color: "white",
+                                        border: "none",
+                                        borderRadius: "4px",
+                                        cursor: "pointer",
+                                        fontSize: "14px"
+                                    }}
+                                >
+                                    View Details
+                                </button>
+                                
+                                <a 
+                                    href={user.html_url} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    style={{
+                                        padding: "8px 16px",
+                                        backgroundColor: "#24292e",
+                                        color: "white",
+                                        textDecoration: "none",
+                                        borderRadius: "4px",
+                                        fontSize: "14px"
+                                    }}
+                                >
+                                    GitHub →
+                                </a>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             )}
 
