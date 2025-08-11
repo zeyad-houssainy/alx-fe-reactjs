@@ -15,7 +15,7 @@ function HomePage() {
                 <h1 className="text-4xl font-bold text-center text-gray-800 mb-12">
                     Recipe Collection
                 </h1>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {recipeList.map(
                         (recipe) => (
                             <div key={recipe.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
