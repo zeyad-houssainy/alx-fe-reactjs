@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-// import axios from "axios"
+import { Link } from "react-router-dom"
 import recipeData from "../data.json"
 
 function HomePage() {
@@ -18,7 +18,11 @@ function HomePage() {
                 <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {recipeList.map(
                         (recipe) => (
-                            <div key={recipe.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                            <Link 
+                                key={recipe.id} 
+                                to={`/recipe/${recipe.id}`}
+                                className="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 transform hover:scale-105"
+                            >
                                 <div className="aspect-w-16 aspect-h-9">
                                     <img 
                                         src={recipe.image} 
@@ -33,8 +37,14 @@ function HomePage() {
                                     <p className="text-gray-600 leading-relaxed">
                                         {recipe.summary}
                                     </p>
+                                    <div className="mt-4 inline-flex items-center text-blue-600 hover:text-blue-800">
+                                        <span className="text-sm font-medium">View Recipe</span>
+                                        <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </div>
                                 </div>
-                            </div>
+                            </Link>
                     ))}
                 </div>
             </div>

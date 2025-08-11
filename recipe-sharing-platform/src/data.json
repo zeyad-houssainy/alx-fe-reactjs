@@ -3,12 +3,67 @@
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmMyaHJwaTR6bXN2djFneDZseXNxZ3F3ejFkNTNqMDVkdXFxejNrYSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ltLLWLhZXJCZW/giphy.gif"
+    "image": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmMyaHJwaTR6bXN2djFneDZseXNxZ3F3ejFkNTNqMDVkdXFxejNrYSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ltLLWLhZXJCZW/giphy.gif",
+    "prepTime": "15 minutes",
+    "cookTime": "20 minutes",
+    "servings": 4,
+    "ingredients": [
+      "400g spaghetti",
+      "200g pancetta or bacon, diced",
+      "3 large eggs",
+      "100g Pecorino Romano cheese, grated",
+      "50g Parmesan cheese, grated",
+      "2 cloves garlic, minced",
+      "Freshly ground black pepper",
+      "Salt to taste",
+      "2 tablespoons olive oil"
+    ],
+    "instructions": [
+      "Bring a large pot of salted water to boil and cook spaghetti according to package directions until al dente.",
+      "While pasta cooks, heat olive oil in a large skillet over medium heat. Add pancetta and cook until crispy, about 5-7 minutes.",
+      "Add minced garlic to the pan and cook for another minute until fragrant.",
+      "In a bowl, whisk together eggs, Pecorino Romano, Parmesan, and a generous amount of black pepper.",
+      "Reserve 1 cup of pasta cooking water, then drain the pasta.",
+      "Immediately add the hot pasta to the skillet with pancetta and toss to combine.",
+      "Remove from heat and quickly pour in the egg mixture while tossing continuously to create a creamy sauce.",
+      "Add pasta water gradually if needed to achieve desired consistency.",
+      "Serve immediately with extra cheese and black pepper."
+    ]
   },
   {
     "id": 2,
     "title": "Chicken Tikka Masala",
     "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-    "image": "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDBrYTRsbTI4b2Q3cHVzZjF3ODQ5MXBhamVpcmEyYnNuNzE3dXc4dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/huImdQGQirKqjG9DBd/giphy.gif"
+    "image": "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDBrYTRsbTI4b2Q3cHVzZjF3ODQ5MXBhamVpcmEyYnNuNzE3dXc4dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/huImdQGQirKqjG9DBd/giphy.gif",
+    "prepTime": "30 minutes",
+    "cookTime": "40 minutes",
+    "servings": 6,
+    "ingredients": [
+      "1.5 lbs boneless chicken, cut into chunks",
+      "1 cup plain yogurt",
+      "2 tablespoons tikka masala spice blend",
+      "1 large onion, diced",
+      "4 cloves garlic, minced",
+      "1 inch ginger, grated",
+      "1 can (14 oz) crushed tomatoes",
+      "1 cup heavy cream",
+      "2 tablespoons butter",
+      "2 tablespoons vegetable oil",
+      "1 teaspoon garam masala",
+      "Salt to taste",
+      "Fresh cilantro for garnish",
+      "Basmati rice for serving"
+    ],
+    "instructions": [
+      "Marinate chicken chunks in yogurt and half the tikka masala spice blend for at least 30 minutes.",
+      "Heat oil in a large skillet over medium-high heat. Cook marinated chicken until browned and cooked through, about 8-10 minutes. Set aside.",
+      "In the same pan, melt butter and sauté onions until translucent, about 5 minutes.",
+      "Add garlic and ginger, cook for another minute until fragrant.",
+      "Add remaining tikka masala spice blend and cook for 30 seconds.",
+      "Pour in crushed tomatoes and simmer for 10 minutes until sauce thickens.",
+      "Stir in heavy cream and garam masala. Season with salt.",
+      "Return chicken to the pan and simmer for 5 minutes to heat through.",
+      "Garnish with fresh cilantro and serve over basmati rice."
+    ]
   }
 ]
