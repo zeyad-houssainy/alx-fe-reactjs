@@ -103,26 +103,26 @@ function AddRecipeForm() {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 py-8 px-4">
-            <div className="max-w-2xl mx-auto">
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div className="min-h-screen bg-gray-50 py-4 sm:py-6 md:py-8 px-4">
+            <div className="max-w-md sm:max-w-lg md:max-w-2xl mx-auto">
+                <div className="bg-white rounded-lg sm:rounded-xl shadow-lg overflow-hidden">
                     {/* Header */}
-                    <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-8 sm:px-8">
-                        <h1 className="text-3xl sm:text-4xl font-bold text-white text-center">
+                    <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-4 sm:px-6 md:px-8 py-6 sm:py-7 md:py-8">
+                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white text-center">
                             Add New Recipe
                         </h1>
-                        <p className="text-blue-100 text-center mt-2">
+                        <p className="text-blue-100 text-center mt-1 sm:mt-2 text-sm sm:text-base">
                             Share your culinary creation with the world
                         </p>
                     </div>
                     
                     {/* Form */}
-                    <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-6">
+                    <form onSubmit={handleSubmit} className="p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-5 md:space-y-6">
                         {/* Recipe Title */}
-                        <div className="space-y-2">
+                        <div className="space-y-1 sm:space-y-2">
                             <label 
                                 htmlFor="title" 
-                                className="block text-sm font-semibold text-gray-700"
+                                className="block text-sm sm:text-base font-semibold text-gray-700"
                             >
                                 Recipe Title
                             </label>
@@ -132,7 +132,7 @@ function AddRecipeForm() {
                                 name="title"
                                 value={formData.title}
                                 onChange={handleInputChange}
-                                className={`w-full px-4 py-3 border-2 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                                className={`w-full px-3 sm:px-4 py-2 sm:py-3 border-2 rounded-md sm:rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base ${
                                     errors.title 
                                         ? 'border-red-500 focus:border-red-500' 
                                         : 'border-gray-300 focus:border-blue-500'
@@ -140,8 +140,8 @@ function AddRecipeForm() {
                                 placeholder="e.g., Grandma's Chocolate Chip Cookies"
                             />
                             {errors.title && (
-                                <p className="text-red-600 text-sm flex items-center">
-                                    <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <p className="text-red-600 text-xs sm:text-sm flex items-center">
+                                    <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                                         <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                                     </svg>
                                     {errors.title}
@@ -150,10 +150,10 @@ function AddRecipeForm() {
                         </div>
 
                         {/* Ingredients */}
-                        <div className="space-y-2">
+                        <div className="space-y-1 sm:space-y-2">
                             <label 
                                 htmlFor="ingredients" 
-                                className="block text-sm font-semibold text-gray-700"
+                                className="block text-sm sm:text-base font-semibold text-gray-700"
                             >
                                 Ingredients
                             </label>
@@ -162,8 +162,8 @@ function AddRecipeForm() {
                                 name="ingredients"
                                 value={formData.ingredients}
                                 onChange={handleInputChange}
-                                rows={6}
-                                className={`w-full px-4 py-3 border-2 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none ${
+                                rows={4}
+                                className={`w-full px-3 sm:px-4 py-2 sm:py-3 border-2 rounded-md sm:rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none text-sm sm:text-base md:rows-6 ${
                                     errors.ingredients 
                                         ? 'border-red-500 focus:border-red-500' 
                                         : 'border-gray-300 focus:border-blue-500'
@@ -171,23 +171,23 @@ function AddRecipeForm() {
                                 placeholder="Enter each ingredient on a new line:&#10;2 cups all-purpose flour&#10;1 cup brown sugar&#10;1/2 cup butter&#10;2 large eggs"
                             />
                             {errors.ingredients && (
-                                <p className="text-red-600 text-sm flex items-center">
-                                    <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <p className="text-red-600 text-xs sm:text-sm flex items-center">
+                                    <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                                         <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                                     </svg>
                                     {errors.ingredients}
                                 </p>
                             )}
-                            <p className="text-gray-500 text-sm">
+                            <p className="text-gray-500 text-xs sm:text-sm">
                                 💡 Tip: Enter each ingredient on a separate line for better formatting
                             </p>
                         </div>
 
                         {/* Preparation Steps */}
-                        <div className="space-y-2">
+                        <div className="space-y-1 sm:space-y-2">
                             <label 
                                 htmlFor="instructions" 
-                                className="block text-sm font-semibold text-gray-700"
+                                className="block text-sm sm:text-base font-semibold text-gray-700"
                             >
                                 Preparation Steps
                             </label>
@@ -196,8 +196,8 @@ function AddRecipeForm() {
                                 name="instructions"
                                 value={formData.instructions}
                                 onChange={handleInputChange}
-                                rows={8}
-                                className={`w-full px-4 py-3 border-2 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none ${
+                                rows={6}
+                                className={`w-full px-3 sm:px-4 py-2 sm:py-3 border-2 rounded-md sm:rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none text-sm sm:text-base md:rows-8 ${
                                     errors.instructions 
                                         ? 'border-red-500 focus:border-red-500' 
                                         : 'border-gray-300 focus:border-blue-500'
@@ -205,24 +205,24 @@ function AddRecipeForm() {
                                 placeholder="Enter each step on a new line:&#10;Preheat oven to 375°F (190°C)&#10;Mix flour and sugar in a large bowl&#10;Add butter and eggs, mix until combined&#10;Bake for 12-15 minutes until golden brown"
                             />
                             {errors.instructions && (
-                                <p className="text-red-600 text-sm flex items-center">
-                                    <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <p className="text-red-600 text-xs sm:text-sm flex items-center">
+                                    <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                                         <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                                     </svg>
                                     {errors.instructions}
                                 </p>
                             )}
-                            <p className="text-gray-500 text-sm">
+                            <p className="text-gray-500 text-xs sm:text-sm">
                                 📝 Tip: Be detailed and clear with each step for best results
                             </p>
                         </div>
 
                         {/* Submit Button */}
-                        <div className="pt-6">
+                        <div className="pt-4 sm:pt-5 md:pt-6">
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className={`w-full py-4 px-6 rounded-lg font-semibold text-white transition-all duration-200 transform ${
+                                className={`w-full py-3 sm:py-4 px-4 sm:px-6 rounded-md sm:rounded-lg font-semibold text-white transition-all duration-200 transform text-sm sm:text-base ${
                                     isSubmitting
                                         ? 'bg-gray-400 cursor-not-allowed'
                                         : 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-lg hover:shadow-xl'
@@ -230,7 +230,7 @@ function AddRecipeForm() {
                             >
                                 {isSubmitting ? (
                                     <div className="flex items-center justify-center">
-                                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <svg className="animate-spin -ml-1 mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                         </svg>
@@ -238,7 +238,7 @@ function AddRecipeForm() {
                                     </div>
                                 ) : (
                                     <div className="flex items-center justify-center">
-                                        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                         </svg>
                                         Add Recipe
